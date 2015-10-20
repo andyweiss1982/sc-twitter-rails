@@ -9,28 +9,23 @@ class TwitterCallsController < ApplicationController
   end
 
   def create
-    @twitter_call = TwitterCall.new(twitter_call_params)
+    @twitter_call = TwitterCall.find_or_initialize_by(twitter_call_params)
 
-    respond_to do |format|
-      if @twitter_call.save
-        format.html { redirect_to @twitter_call, notice: 'Twitter call was successfully created.' }
-        format.json { render :show, status: :created, location: @twitter_call }
-      else
-        format.html { render :new }
-        format.json { render json: @twitter_call.errors, status: :unprocessable_entity }
-      end
+    response = TwitterApi.new(@twitter_call.handle).run
+
+
+    if @twitter_call.save
+      redirect_to @twitter_call, notice: 'Twitter call was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @twitter_call.update(twitter_call_params)
-        format.html { redirect_to @twitter_call, notice: 'Twitter call was successfully updated.' }
-        format.json { render :show, status: :ok, location: @twitter_call }
-      else
-        format.html { render :edit }
-        format.json { render json: @twitter_call.errors, status: :unprocessable_entity }
-      end
+    if @twitter_call.update(twitter_call_params)
+      redirect_to @twitter_call, notice: 'Twitter call was successfully updated.'
+    else
+      render :edit
     end
   end
 
