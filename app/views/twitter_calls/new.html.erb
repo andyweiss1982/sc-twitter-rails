@@ -1,5 +1,5 @@
-<%= form_tag('/twitter', method: 'post' ) do %>
-  <%= label_tag(:handle, "Search for:") %>
-  <%= text_field_tag(:handle) %>
-  <%= submit_tag("Search Twitter") %>
-<% end %>
+<h1>New Twitter Call</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', twitter_calls_path %>

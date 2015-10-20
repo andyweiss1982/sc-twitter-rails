@@ -1,0 +1,21 @@
+<%= form_for(@twitter_call) do |f| %>
+  <% if @twitter_call.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@twitter_call.errors.count, "error") %> prohibited this twitter_call from being saved:</h2>
+
+      <ul>
+      <% @twitter_call.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :handle %><br>
+    <%= f.text_field :handle %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

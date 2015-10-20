@@ -1,2 +1,9 @@
-<h1>TwitterCalls#show</h1>
-<p>Find me in app/views/twitter_calls/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Handle:</strong>
+  <%= @twitter_call.handle %>
+</p>
+
+<%= link_to 'Edit', edit_twitter_call_path(@twitter_call) %> |
+<%= link_to 'Back', twitter_calls_path %>
