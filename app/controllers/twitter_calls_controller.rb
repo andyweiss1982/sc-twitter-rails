@@ -10,10 +10,6 @@ class TwitterCallsController < ApplicationController
 
   def create
     @twitter_call = TwitterCall.find_or_initialize_by(twitter_call_params)
-
-    response = TwitterApi.new(@twitter_call.handle).run
-
-
     if @twitter_call.save
       redirect_to @twitter_call, notice: 'Twitter call was successfully created.'
     else

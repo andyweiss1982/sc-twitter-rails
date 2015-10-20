@@ -4,3 +4,25 @@
   <strong>Handle:</strong>
   <%= @twitter_call.handle %>
 </p>
+
+
+<table>
+<thead>
+  <tr>
+    <td>TEXT</td>
+    <td>TIME</td>
+  </tr>
+</thead>
+<tbody>
+  <% @twitter_call.response.each do |tweet| %>
+    <tr>
+      <td><%= tweet.text %></td>
+      <td><%= tweet.created_at %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+
+
+
+
