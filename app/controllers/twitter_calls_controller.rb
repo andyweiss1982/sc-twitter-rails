@@ -1,5 +1,6 @@
 class TwitterCallsController < ApplicationController
   before_action :set_twitter_call, only: [:show, :update]
+  before_action :authenticate_user!
 
   def show
   end
@@ -11,7 +12,7 @@ class TwitterCallsController < ApplicationController
   def create
     @twitter_call = TwitterCall.find_or_initialize_by(twitter_call_params)
     if @twitter_call.save
-      redirect_to @twitter_call, notice: 'Twitter call was successfully created.'
+      redirect_to @twitter_call, notice: 'Success!'
     else
       render :new
     end
@@ -19,7 +20,7 @@ class TwitterCallsController < ApplicationController
 
   def update
     if @twitter_call.update(twitter_call_params)
-      redirect_to @twitter_call, notice: 'Twitter call was successfully updated.'
+      redirect_to @twitter_call, notice: 'Success!'
     else
       render :edit
     end

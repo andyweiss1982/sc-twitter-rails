@@ -1,0 +1,23 @@
+<header class="centered-navigation" role="banner">
+  <div class="centered-navigation-wrapper">
+    <a href="javascript:void(0)" class="mobile-logo">
+      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_3_dark.png" alt="Logo image">
+    </a>
+    <a href="javascript:void(0)" id="js-centered-navigation-mobile-menu" class="centered-navigation-mobile-menu">MENU</a>
+    <nav role="navigation">
+      <ul id="js-centered-navigation-menu" class="centered-navigation-menu show">
+        <li class="nav-link"><%= link_to "New Twitter Search", new_twitter_call_path %></li>
+        <li class="nav-link logo">
+          <a href="<%= root_path %>" class="logo">
+            <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_3_dark.png" alt="Logo image">
+          </a>
+        </li>
+        <% if current_user %>
+          <li class="nav-link"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
+        <% else %>
+          <li class="nav-link"><%= link_to 'Sign In', new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

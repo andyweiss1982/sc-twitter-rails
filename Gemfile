@@ -21,6 +21,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem 'twitter'
+gem 'bourbon'
+gem 'neat'
+gem 'refills'
+gem 'normalize-rails', "~> 3.0.0"
+gem 'title'
+gem 'flutie'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Handle:</strong>
   <%= @twitter_call.handle %>
@@ -9,15 +7,15 @@
 <table>
 <thead>
   <tr>
-    <td>TEXT</td>
+    <td colspan=4>TEXT</td>
     <td>TIME</td>
   </tr>
 </thead>
 <tbody>
   <% @twitter_call.response.each do |tweet| %>
     <tr>
-      <td><%= tweet.text %></td>
-      <td><%= tweet.created_at %></td>
+      <td colspan=4><%= parse_mentions(tweet.text) %></td>
+      <td><%= tweet_time(tweet.created_at) %></td>
     </tr>
   <% end %>
 </tbody>

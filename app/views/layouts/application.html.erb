@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ScTwitterRails</title>
+  <title><%= title %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
+<body class="<%= body_class %>">
+<%= render 'shared/nav' %>
+<%= render 'refills/flashes' %>
+<div class="page-content">
+  <%= yield %>
+</div>
 
 </body>
 </html>

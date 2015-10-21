@@ -1,0 +1,15 @@
+.page-content {
+  margin-top: 2em;
+}
+
+.twitter_calls .page-content {
+  @include outer-container(90%);
+}
+
+.devise-sessions .page-content {
+  @include outer-container(40%);
+}
+
+.devise-registrations .page-content {
+  @include outer-container(40%);
+}
