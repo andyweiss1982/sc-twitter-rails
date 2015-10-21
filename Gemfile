@@ -22,9 +22,7 @@ gem 'refills'
 gem 'normalize-rails', "~> 3.0.0"
 gem 'title'
 gem 'flutie'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
+gem 'puma'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -43,5 +41,7 @@ end
 
 group :test do
   gem "shoulda-matchers", require: false
+  gem "database_cleaner"
+  gem "capybara"
 end
 

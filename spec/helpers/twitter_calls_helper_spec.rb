@@ -1,15 +1,17 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the TwitterCallsHelper. For example:
-#
-# describe TwitterCallsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe TwitterCallsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "parse_mentions" do
+    it "turns words that start with '@' into links to new twitter_calls" do
+      expect(helper.parse_mentions("hello @andyweiss1982")).to eq("hello <a rel=\"nofollow\" data-method=\"post\" href=\"/twitter_calls?twitter_call%5Bhandle%5D=andyweiss1982\">@andyweiss1982</a>")
+    end
+  end
+
+  describe "strip_punctuation" do
+    it "distills @mentions with punctuation into @mentions sans punctuation" do
+      expect(helper.strip_punctuation("@andyweiss1982:")).to eq("@andyweiss1982")
+      expect(helper.strip_punctuation("@andyweiss1982's")).to eq("@andyweiss1982")
+      expect(helper.strip_punctuation("@andyweiss1982!")).to eq("@andyweiss1982")
+    end
+  end
 end

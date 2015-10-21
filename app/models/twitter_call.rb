@@ -5,7 +5,7 @@ class TwitterCall < ActiveRecord::Base
   def response
     Rails.cache.fetch(cache_key, expires_in: 5.minutes) do
       begin
-        TwitterClient.user_timeline(handle).first(25)
+        TwitterClient.user_timeline(handle, count: 25)
       rescue Twitter::Error::NotFound
         return []
       end
