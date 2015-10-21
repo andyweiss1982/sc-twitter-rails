@@ -8,7 +8,6 @@ This app is designed around two models, TwitterCall and User:
 - TwitterCall implements a #response method, which fetches the 25 must recent tweets for its handle.
 - The actual API call is made through the [Twitter gem's](https://github.com/sferik/twitter) #user_timeline method.  
 - #response also implements a low-level 5 minute cache and some basic error handling.
-
 - User is just a simple Devise backed user, with email and password fields.
 
 ## Routes, Controllers and Flashes
