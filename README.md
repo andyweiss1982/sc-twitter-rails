@@ -6,9 +6,9 @@ This app is designed around two models, TwitterCall and User:
 
 - TwitterCall has two string fields, handle and slug, each of which must be present and unique.
 - TwitterCall implements a #response method, which fetches the 25 must recent tweets for its handle.
-- The actual API call is made through the [Twitter gem's](https://github.com/sferik/twitter) #user_timeline method.  
+- The actual API call is made through the [Twitter Gem's](https://github.com/sferik/twitter) #user_timeline method.  
 - #response also implements a low-level 5 minute cache and some basic error handling.
-- User is just a simple Devise backed user, with email and password fields.
+- User is just a simple [Devise](https://github.com/plataformatec/devise) backed user, with email and password fields.
 
 ## Routes, Controllers and Flashes
 
@@ -21,7 +21,7 @@ The only supported controller actions are #new, #create and #show.
 
 ## Local Setup
 
-This app uses the dotenv-rails gem to handle sensitive keys.  You will need to clone the repo, and place a .env file at root that has the following four keys, and their associated values (which can be generated from your Twitter account):
+This app uses the [dotenv-rails gem](https://github.com/bkeepers/dotenv) to handle sensitive keys.  You will need to clone the repo, and place a .env file at root that has the following four keys, and their associated values (which can be generated from your Twitter account):
 
         TWITTER_CONSUMER_KEY=
         TWITTER_CONSUMER_SECRET=
@@ -39,10 +39,10 @@ from the command line will have you up and running, with the app accesible at lo
 
 The app uses a Puma server and Postgresql DB for deployment.  Presuming you have a Heroku account, all you need to do is run.
 
-        heroky create
+        heroku create
         git push heroku master
 
-from the command line.
+from the command line.  The app is currently deployed to [https://sc-twitter-rails.herokuapp.com](https://sc-twitter-rails.herokuapp.com).
 
 ## Testing
 
