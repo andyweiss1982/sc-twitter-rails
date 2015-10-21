@@ -62,3 +62,4 @@ from the command line.
 
 - I do some simple parsing for @mentions in /helpers/twitter_calls_helper.rb.  It's possible some punctuation could throw the parser for a loop but I did some basic testing to try and prevent this with some regex matching that could be improved as errors are caught.
 - Similarly, the app tries to parse urls and render them as hyperlinks to new tabs.
+- Basic styling is done with [Bourbon](http://bourbon.io/), [Neat](http://neat.bourbon.io/) and [Refills](http://refills.bourbon.io/).
