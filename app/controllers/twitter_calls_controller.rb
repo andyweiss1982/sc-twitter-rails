@@ -1,5 +1,5 @@
 class TwitterCallsController < ApplicationController
-  before_action :set_twitter_call, only: [:show, :update]
+  before_action :set_twitter_call, only: :show
   before_action :authenticate_user!
 
   def show
@@ -20,18 +20,6 @@ class TwitterCallsController < ApplicationController
       end
     else
       render :new
-    end
-  end
-
-  def update
-    if @twitter_call.update(twitter_call_params)
-      if @twitter_call.response.any?
-        redirect_to @twitter_call, notice: 'Success!'
-      else
-        redirect_to request.referrer, alert: "No tweets for user: #{@twitter_call.handle}"
-      end
-    else
-      render :edit
     end
   end
 
