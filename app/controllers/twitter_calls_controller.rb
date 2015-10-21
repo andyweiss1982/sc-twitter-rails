@@ -11,8 +11,13 @@ class TwitterCallsController < ApplicationController
 
   def create
     @twitter_call = TwitterCall.find_or_initialize_by(twitter_call_params)
+    @twitter_call.slug = @twitter_call.handle.downcase.gsub(" ", "-")
     if @twitter_call.save
-      redirect_to @twitter_call, notice: 'Success!'
+      if @twitter_call.response.any?
+        redirect_to @twitter_call, notice: 'Success!'
+      else
+        redirect_to request.referrer, alert: "No such handle: #{@twitter_call.handle}"
+      end
     else
       render :new
     end
@@ -20,7 +25,11 @@ class TwitterCallsController < ApplicationController
 
   def update
     if @twitter_call.update(twitter_call_params)
-      redirect_to @twitter_call, notice: 'Success!'
+      if @twitter_call.response.any?
+        redirect_to @twitter_call, notice: 'Success!'
+      else
+        redirect_to request.referrer, alert: "No such handle: #{@twitter_call.handle}"
+      end
     else
       render :edit
     end
@@ -29,7 +38,7 @@ class TwitterCallsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_twitter_call
-      @twitter_call = TwitterCall.find(params[:id])
+      @twitter_call = TwitterCall.find_by_slug(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
