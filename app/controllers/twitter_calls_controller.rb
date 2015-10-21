@@ -16,7 +16,7 @@ class TwitterCallsController < ApplicationController
       if @twitter_call.response.any?
         redirect_to @twitter_call, notice: 'Success!'
       else
-        redirect_to request.referrer, alert: "No such handle: #{@twitter_call.handle}"
+        redirect_to request.referrer, alert: "No tweets for user: #{@twitter_call.handle}"
       end
     else
       render :new
@@ -28,7 +28,7 @@ class TwitterCallsController < ApplicationController
       if @twitter_call.response.any?
         redirect_to @twitter_call, notice: 'Success!'
       else
-        redirect_to request.referrer, alert: "No such handle: #{@twitter_call.handle}"
+        redirect_to request.referrer, alert: "No tweets for user: #{@twitter_call.handle}"
       end
     else
       render :edit
